@@ -18,14 +18,32 @@ public class MarsRover {
     public void execute(char command) {
         switch (command) {
             case 'L':
-                this.orientation = 'W';
+                turnLeft();
                 break;
             case 'R':
-                this.orientation = 'E';
+                turnRight();
                 break;
             case 'M':
                 move();
                 break;
+        }
+    }
+
+    public void turnLeft() {
+        switch (this.orientation) {
+            case 'N': this.orientation = 'W'; break;
+            case 'E': this.orientation = 'N'; break;
+            case 'S': this.orientation = 'E'; break;
+            case 'W': this.orientation = 'S'; break;
+        }
+    }
+
+    public void turnRight() {
+        switch (this.orientation) {
+            case 'N': this.orientation = 'E'; break;
+            case 'E': this.orientation = 'S'; break;
+            case 'S': this.orientation = 'W'; break;
+            case 'W': this.orientation = 'N'; break;
         }
     }
 

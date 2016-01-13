@@ -40,4 +40,14 @@ public class MarsRoverTest {
         assertThat(marsRover.getPosition(), is("0 2"));
         assertThat(marsRover.getOrientation(), is('E'));
     }
+
+    @Test
+    public void should_setup_a_new_start_point_and_execute_multiple_commands() {
+        MarsRover newMarsRover = new MarsRover(1, 2, 'N');
+
+        newMarsRover.execute("LMLMLMLMM");
+
+        assertThat(newMarsRover.getPosition(), is("1 3"));
+        assertThat(newMarsRover.getOrientation(), is('N'));
+    }
 }

@@ -25,13 +25,17 @@ public class MarsRover {
                 turnRight();
                 break;
             case 'M':
-                if( !((this.orientation.equals(DIRECTION.NORTH) && this.y == 5)
-                        || (this.orientation.equals(DIRECTION.EAST) && this.x == 5)
-                        || (this.orientation.equals(DIRECTION.SOUTH) && this.y == 0)
-                        || (this.orientation.equals(DIRECTION.WEST) && this.x == 0)) )
+                if( !isCrossingBoundary())
                     move();
                 break;
         }
+    }
+
+    public boolean isCrossingBoundary() {
+        return (this.orientation.equals(DIRECTION.NORTH) && this.y == 5)
+                || (this.orientation.equals(DIRECTION.EAST) && this.x == 5)
+                || (this.orientation.equals(DIRECTION.SOUTH) && this.y == 0)
+                || (this.orientation.equals(DIRECTION.WEST) && this.x == 0);
     }
 
     public void turnLeft() {

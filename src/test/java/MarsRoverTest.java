@@ -26,5 +26,10 @@ public class MarsRoverTest {
         assertThat(marsRover.getOrientation(), is('E'));
     }
 
+    @Test
+    public void should_return_0_1_N_when_receive_M_command() {
+        marsRover.execute("M");
 
+        assertThat(marsRover.getPosition(), is("0 1"));
+    }
 }

@@ -11,14 +11,33 @@ public class MarsRover {
     }
 
     public void execute(String commands) {
-        if(commands.equals("L")){
-            this.orientation = 'W';
-        } else if(commands.equals("R")){
-            this.orientation = 'E';
+        switch (commands) {
+            case "L":
+                this.orientation = 'W';
+                break;
+            case "R":
+                this.orientation = 'E';
+                break;
+            case "M":
+                move();
+                break;
+        }
+    }
+
+    public void move() {
+        switch (orientation) {
+            case 'N': y += 1; break;
+            case 'E': x += 1; break;
+            case 'S': y -= 1; break;
+            case 'W': x -= 1; break;
         }
     }
 
     public char getOrientation() {
         return orientation;
+    }
+
+    public String getPosition() {
+        return x + " " + y;
     }
 }

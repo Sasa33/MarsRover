@@ -68,4 +68,14 @@ public class MarsRoverTest {
         assertThat(marsRover.getPosition(), is("1 0"));
         assertThat(marsRover.getOrientation(), is(DIRECTION.EAST));
     }
+
+    @Test
+    public void should_return_5_1_N_when_start_at_4_0_N_and_receive_RMMRMMLLM_commands() {
+        MarsRover newMarsRover = new MarsRover(4, 0, DIRECTION.NORTH);
+
+        newMarsRover.execute("RMMRMMLLM");
+
+        assertThat(newMarsRover.getPosition(), is("5 1"));
+        assertThat(newMarsRover.getOrientation(), is(DIRECTION.NORTH));
+    }
 }

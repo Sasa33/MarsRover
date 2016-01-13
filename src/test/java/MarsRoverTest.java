@@ -32,4 +32,12 @@ public class MarsRoverTest {
 
         assertThat(marsRover.getPosition(), is("0 1"));
     }
+
+    @Test
+    public void should_return_0_2_E_when_receive_MMR_command() {
+        marsRover.execute("MMR");
+
+        assertThat(marsRover.getPosition(), is("0 2"));
+        assertThat(marsRover.getOrientation(), is('E'));
+    }
 }

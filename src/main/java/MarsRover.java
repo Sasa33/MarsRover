@@ -11,14 +11,19 @@ public class MarsRover {
     }
 
     public void execute(String commands) {
-        switch (commands) {
-            case "L":
+        for (char command : commands.toCharArray())
+            execute(command);
+    }
+
+    public void execute(char command) {
+        switch (command) {
+            case 'L':
                 this.orientation = 'W';
                 break;
-            case "R":
+            case 'R':
                 this.orientation = 'E';
                 break;
-            case "M":
+            case 'M':
                 move();
                 break;
         }

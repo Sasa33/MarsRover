@@ -78,4 +78,14 @@ public class MarsRoverTest {
         assertThat(newMarsRover.getPosition(), is("5 1"));
         assertThat(newMarsRover.getOrientation(), is(DIRECTION.NORTH));
     }
+
+    @Test
+    public void should_return_6_1_N_when_start_at_4_0_N_with_new_top_right_boundaries_and_receive_RMMRMMLLM_commands() {
+        MarsRover newMarsRover = new MarsRover(4, 0, DIRECTION.NORTH, 10, 10);
+
+        newMarsRover.execute("RMMRMMLLM");
+
+        assertThat(newMarsRover.getPosition(), is("6 1"));
+        assertThat(newMarsRover.getOrientation(), is(DIRECTION.NORTH));
+    }
 }

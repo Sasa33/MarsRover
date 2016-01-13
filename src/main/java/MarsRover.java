@@ -3,12 +3,24 @@ public class MarsRover {
     private int x;
     private int y;
     private DIRECTION orientation = DIRECTION.NORTH;
+    private int boundary_x;
+    private int boundary_y;
 
 
     public MarsRover(int x, int y, DIRECTION orientation) {
         this.x = x;
         this.y = y;
         this.orientation = orientation;
+        this.boundary_x = 5;
+        this.boundary_y = 5;
+    }
+
+    public MarsRover(int x, int y, DIRECTION orientation, int boundary_x, int boundary_y) {
+        this.x = x;
+        this.y = y;
+        this.orientation = orientation;
+        this.boundary_x = boundary_x;
+        this.boundary_y = boundary_y;
     }
 
     public void execute(String commands) {
@@ -32,8 +44,8 @@ public class MarsRover {
     }
 
     public boolean isCrossingBoundary() {
-        return (this.orientation.equals(DIRECTION.NORTH) && this.y == 5)
-                || (this.orientation.equals(DIRECTION.EAST) && this.x == 5)
+        return (this.orientation.equals(DIRECTION.NORTH) && this.y == this.boundary_y)
+                || (this.orientation.equals(DIRECTION.EAST) && this.x == this.boundary_x)
                 || (this.orientation.equals(DIRECTION.SOUTH) && this.y == 0)
                 || (this.orientation.equals(DIRECTION.WEST) && this.x == 0);
     }

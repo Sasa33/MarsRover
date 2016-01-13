@@ -2,9 +2,10 @@
 public class MarsRover {
     private int x;
     private int y;
-    private char orientation;
+    private DIRECTION orientation = DIRECTION.NORTH;
 
-    public MarsRover(int x, int y, char orientation) {
+
+    public MarsRover(int x, int y, DIRECTION orientation) {
         this.x = x;
         this.y = y;
         this.orientation = orientation;
@@ -30,33 +31,27 @@ public class MarsRover {
     }
 
     public void turnLeft() {
-        switch (this.orientation) {
-            case 'N': this.orientation = 'W'; break;
-            case 'E': this.orientation = 'N'; break;
-            case 'S': this.orientation = 'E'; break;
-            case 'W': this.orientation = 'S'; break;
-        }
+        int index = this.orientation.ordinal();
+        int length = DIRECTION.values().length;
+        this.orientation = (index <= 0) ? DIRECTION.values()[index + length - 1] : DIRECTION.values()[index - 1];
     }
 
     public void turnRight() {
-        switch (this.orientation) {
-            case 'N': this.orientation = 'E'; break;
-            case 'E': this.orientation = 'S'; break;
-            case 'S': this.orientation = 'W'; break;
-            case 'W': this.orientation = 'N'; break;
-        }
+        int index = this.orientation.ordinal();
+        int length = DIRECTION.values().length;
+        this.orientation = (index >= (length - 1)) ? DIRECTION.values()[index - length] : DIRECTION.values()[index + 1];
     }
 
     public void move() {
-        switch (orientation) {
-            case 'N': y += 1; break;
-            case 'E': x += 1; break;
-            case 'S': y -= 1; break;
-            case 'W': x -= 1; break;
+        switch (this.orientation) {
+            case NORTH: y += 1; break;
+            case EAST: x += 1; break;
+            case SOUTH: y -= 1; break;
+            case WEST: x -= 1; break;
         }
     }
 
-    public char getOrientation() {
+    public DIRECTION getOrientation() {
         return orientation;
     }
 

@@ -9,21 +9,21 @@ public class MarsRoverTest {
 
     @Before
     public void setUp() {
-        marsRover = new MarsRover(0, 0, 'N');
+        marsRover = new MarsRover(0, 0, DIRECTION.NORTH);
     }
 
     @Test
     public void should_return_0_0_W_when_receive_L_command() {
         marsRover.execute("L");
 
-        assertThat(marsRover.getOrientation(), is('W'));
+        assertThat(marsRover.getOrientation(), is(DIRECTION.WEST));
     }
 
     @Test
     public void should_return_0_0_E_when_receive_R_command() {
         marsRover.execute("R");
 
-        assertThat(marsRover.getOrientation(), is('E'));
+        assertThat(marsRover.getOrientation(), is(DIRECTION.EAST));
     }
 
     @Test
@@ -38,16 +38,18 @@ public class MarsRoverTest {
         marsRover.execute("MMR");
 
         assertThat(marsRover.getPosition(), is("0 2"));
-        assertThat(marsRover.getOrientation(), is('E'));
+        assertThat(marsRover.getOrientation(), is(DIRECTION.EAST));
     }
 
     @Test
     public void should_setup_a_new_start_point_and_execute_multiple_commands() {
-        MarsRover newMarsRover = new MarsRover(1, 2, 'N');
+        MarsRover newMarsRover = new MarsRover(1, 2, DIRECTION.NORTH);
 
         newMarsRover.execute("LMLMLMLMM");
 
         assertThat(newMarsRover.getPosition(), is("1 3"));
-        assertThat(newMarsRover.getOrientation(), is('N'));
+        assertThat(newMarsRover.getOrientation(), is(DIRECTION.NORTH));
     }
+
+
 }

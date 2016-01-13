@@ -34,7 +34,7 @@ public class MarsRoverTest {
     }
 
     @Test
-    public void should_return_0_2_E_when_receive_MMR_command() {
+    public void should_return_0_2_E_when_receive_MMR_commands() {
         marsRover.execute("MMR");
 
         assertThat(marsRover.getPosition(), is("0 2"));
@@ -42,7 +42,7 @@ public class MarsRoverTest {
     }
 
     @Test
-    public void should_retrun_1_3_N_when_start_at_1_2_N_and_receive_LMLMLMM() {
+    public void should_return_1_3_N_when_start_at_1_2_N_and_receive_LMLMLMM_commands() {
         MarsRover newMarsRover = new MarsRover(1, 2, DIRECTION.NORTH);
 
         newMarsRover.execute("LMLMLMLMM");
@@ -52,12 +52,20 @@ public class MarsRoverTest {
     }
 
     @Test
-    public void should_retrun_5_1_E_when_start_at_3_3_E_and_receive_MMRMMRMRRM() {
+    public void should_return_5_1_E_when_start_at_3_3_E_and_receive_MMRMMRMRRM_commands() {
         MarsRover newMarsRover = new MarsRover(3, 3, DIRECTION.EAST);
 
         newMarsRover.execute("MMRMMRMRRM");
 
         assertThat(newMarsRover.getPosition(), is("5 1"));
         assertThat(newMarsRover.getOrientation(), is(DIRECTION.EAST));
+    }
+
+    @Test
+    public void should_return_1_0_E_when_receive_LMMRRM_commands() {
+        marsRover.execute("LMMRRM");
+
+        assertThat(marsRover.getPosition(), is("1 0"));
+        assertThat(marsRover.getOrientation(), is(DIRECTION.EAST));
     }
 }

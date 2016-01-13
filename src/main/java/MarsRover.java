@@ -25,7 +25,11 @@ public class MarsRover {
                 turnRight();
                 break;
             case 'M':
-                move();
+                if( !((this.orientation.equals(DIRECTION.NORTH) && this.y == 5)
+                        || (this.orientation.equals(DIRECTION.EAST) && this.x == 5)
+                        || (this.orientation.equals(DIRECTION.SOUTH) && this.y == 0)
+                        || (this.orientation.equals(DIRECTION.WEST) && this.x == 0)) )
+                    move();
                 break;
         }
     }

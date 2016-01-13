@@ -42,7 +42,7 @@ public class MarsRoverTest {
     }
 
     @Test
-    public void should_setup_a_new_start_point_and_execute_multiple_commands() {
+    public void should_retrun_1_3_N_when_start_at_1_2_N_and_receive_LMLMLMM() {
         MarsRover newMarsRover = new MarsRover(1, 2, DIRECTION.NORTH);
 
         newMarsRover.execute("LMLMLMLMM");
@@ -51,5 +51,13 @@ public class MarsRoverTest {
         assertThat(newMarsRover.getOrientation(), is(DIRECTION.NORTH));
     }
 
+    @Test
+    public void should_retrun_5_1_E_when_start_at_3_3_E_and_receive_MMRMMRMRRM() {
+        MarsRover newMarsRover = new MarsRover(3, 3, DIRECTION.EAST);
 
+        newMarsRover.execute("MMRMMRMRRM");
+
+        assertThat(newMarsRover.getPosition(), is("5 1"));
+        assertThat(newMarsRover.getOrientation(), is(DIRECTION.EAST));
+    }
 }

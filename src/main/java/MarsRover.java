@@ -39,7 +39,7 @@ public class MarsRover {
     public void turnRight() {
         int index = this.orientation.ordinal();
         int length = DIRECTION.values().length;
-        this.orientation = (index >= (length - 1)) ? DIRECTION.values()[index - length] : DIRECTION.values()[index + 1];
+        this.orientation = (index >= (length - 1)) ? DIRECTION.values()[index - length + 1] : DIRECTION.values()[index + 1];
     }
 
     public void move() {
